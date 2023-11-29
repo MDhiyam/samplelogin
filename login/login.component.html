@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 col-md-12 col-sm-12">
+            <div class="card shadow-lg border-0 p-3">
+                <div class="card-body">
+                    <h1>Login</h1>
+                    <form 
+                        action="" 
+                        class="mt-4"
+                        #f="ngForm"
+                        novalidate
+                        (ngSubmit)="f.form.valid&&onSubmit()"
+                        >
+                        <div class="form-group">
+                            <label class="text-uppercase">Email</label>
+                            <input type="email"  class="form-control" name="email" [ngModelOptions]="{standalone: true}" placeholder="User Email"  required [(ngModel)]="loginObj.email" #email="ngModel" >
+                            <span class="text-danger"*ngIf="this.submit&&email.errors?.['required']" > 
+                                Email is required.
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <div class="password_field">
+                                <label class="text-uppercase">Password</label>
+                                <input  class="form-control"  name="password" id="password" [(ngModel)]="loginObj.password" #password="ngModel"  [ngModelOptions]="{standalone: true}" placeholder="User Password"   minlength="8" required [type]="changetype?'password' : 'text'" > 
+                                <span (click)="viewPass()"><i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'" class="fa fa-eye"></i></span>
+
+                            </div>
+                           <span class="text-danger"  *ngIf="this.submit&&password.errors?.['required']"> 
+                                Password is required.
+                            </span>
+                            <span class="text-danger" *ngIf="this.submit&&password.errors?.['minlength']"> 
+                                Password should contain minimum 8 characters
+                            </span>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" id="remember_me">Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="javascript:void(0);" routerLink="/forgot_pass" class="forgot_pass float-right" style="color:#212529;font-weight:500;">Forgot Password?</a>
+                            </div>
+                        </div>
+                        <div class="form-group pt-3">
+                            <button type="submit" (click)="submit=true"class="btn btn-dark btn-lg btn-block" >Login</button>
+                        </div>
+                        <p class="text-center">Not registered yet?
+                            <span>
+                                <a href="javascript:void(0);" routerLink="/register" style="color:#343a40;font-weight:700;">Create an account</a>
+                            </span>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

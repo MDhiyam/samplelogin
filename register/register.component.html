@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 col-md-12 col-sm-12">
+            <div class="card shadow-lg border-0 p-3">
+                <div class="card-body">
+                    <h1>Create an account</h1>
+                    <form 
+                        action="" 
+                        class="mt-5"
+                        #f="ngForm"
+                        novalidate
+                        (ngSubmit)="f.form.valid&&onSubmit()" 
+                        > 
+                        <div class="form-group">
+                            <label class="text-uppercase">Name</label>
+                            <input type="text" class="form-control" type="text" name="name" [(ngModel)]="signupObj.name" #name="ngModel" placeholder="User Name" required [ngModelOptions]="{standalone: true}"> 
+                            <span class="text-danger" *ngIf="this.submit&&name.errors?.['required']" > <!--True when validation fails (Not provide value for input)-->
+                                Name is required.
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-uppercase">Email</label>
+                            <input type="text"  class="form-control" type="email" name="email" [(ngModel)]="signupObj.email"  placeholder="User Email" required #email="ngModel" [ngModelOptions]="{standalone: true}">
+                            <span class="text-danger" *ngIf="this.submit&&email.errors?.['required']">
+                                Email is required.
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <div class="password_field">
+                                <label class="text-uppercase">Password</label>
+                                <input  class="form-control" type="password" name="password" [(ngModel)]="signupObj.password" #password="ngModel" [ngModelOptions]="{standalone: true}" id="id_password" placeholder="User Password" required  minlength="8" [type]="changetype?'password' : 'text'">
+                                <span (click)="viewPass()"><i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'" class="fa fa-eye"></i></span>
+                            </div>
+                            <span class="text-danger" *ngIf="this.submit&&password.errors?.['required']">
+                                Password is required.
+                            </span>
+                            <span class="text-danger" *ngIf="this.submit&&password.errors?.['minlength']">
+                                Password should contain minimum 8 characters
+                            </span>
+                        </div>
+                        <div class="form-group mt-4">
+                            <button type="submit" (click)="submit=true" class="btn btn-dark btn-lg btn-block mt-3" >Sign Up</button>
+                        </div>
+                        <p class="text-center mt-2">Already have an account?<span><a href="javascript:void(0);" routerLink="/" style="color:#343a40;font-weight:700;">Login</a></span></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

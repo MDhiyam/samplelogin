@@ -1,0 +1,22 @@
+a{
+    text-decoration: none;
+}
+.container .col-lg-5{
+    margin:0 auto;
+}
+.container .card{
+    margin:20% 0;
+}
+.container .form-group label{
+    font-weight:500;   
+}
+.password_field{
+    position: relative;
+    font-size:16px;
+}
+.password_field .fa-eye{
+    position:absolute;
+    top:43px;
+    right:10px;
+    color: #aaa;
+}
